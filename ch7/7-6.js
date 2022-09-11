@@ -1,53 +1,44 @@
 export class TrackingInformation {
-  #shippingCompany;
-  #trackingNumber;
-  constructor(trackingNumber, shippingCompany) {
-    this.#trackingNumber = trackingNumber;
-    this.#shippingCompany = shippingCompany;
-  }
-
-  get shippingCompany() {
-    return this.#shippingCompany;
-  }
-
-  set shippingCompany(arg) {
-    this.#shippingCompany = arg;
-  }
-
-  get trackingNumber() {
-    return this.#trackingNumber;
-  }
-
-  set trackingNumber(arg) {
-    this.#trackingNumber = arg;
-  }
-
-  get display() {
-    return `${this.shippingCompany}: ${this.trackingNumber}`;
-  }
+    #shippingCompany;
+    #trackingNumber;
+    constructor(trackingNumber, shippingCompany) {
+        this.#trackingNumber = trackingNumber;
+        this.#shippingCompany = shippingCompany;
+    }
 }
 
 export class Shipment {
-  #trackingInformation;
-  constructor(trackingInformation) {
-    this.#trackingInformation = trackingInformation;
-  }
+    #shippingCompany;
+    #trackingNumber;
 
-  get trackingInfo() {
-    return this.#trackingInformation.display;
-  }
+    constructor(trackingNumber, shippingCompany) {
+        this.#trackingNumber = trackingNumber;
+        this.#shippingCompany = shippingCompany;
+    }
 
-  get trackingInformation() {
-    return this.#trackingInformation;
-  }
+    get trackingInfo() {
+        return `${this.shippingCompany}: ${this.trackingNumber}`;
+    }
 
-  set trackingInformation(trackingInformation) {
-    this.#trackingInformation = trackingInformation;
-  }
+    get shippingCompany() {
+        return this.#shippingCompany;
+    }
+
+    set shippingCompany(arg) {
+        this.#shippingCompany = arg;
+    }
+
+    get trackingNumber() {
+        return this.#trackingNumber;
+    }
+
+    set trackingNumber(arg) {
+        this.#trackingNumber = arg;
+    }
 }
 
-const shipment = new Shipment(new TrackingInformation(999, 'Maersk'));
+const shipment = new Shipment(999, 'Maersk');
 console.log(shipment.trackingInfo);
 
-shipment.trackingInformation.shippingCompany = 'COSCO';
+shipment.shippingCompany = 'COSCO';
 console.log(shipment.trackingInfo);
