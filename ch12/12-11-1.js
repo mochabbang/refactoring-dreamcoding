@@ -1,3 +1,8 @@
 class List {}
 
-class Stack extends List {}
+class Stack {
+  #storage;
+  constructor() {
+    this.#storage = new List();
+  }
+}
